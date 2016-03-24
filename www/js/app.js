@@ -35,8 +35,20 @@ angular.module('starter', ['ionic', 'ngCordova'])
           var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: 'u here'
+            title: 'u here',
+            draggable: true,
+            animation: google.maps.Animation.DROP
           })
+
+          marker.addListener('click', toggleBounce)
+
+          function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+              marker.setAnimation(null)
+            } else {
+              marker.setAnimation(google.maps.Animation.BOUNCE)
+            }
+          }
         }, function(err) {
           $ionicLoading.hide()
           console.log(err)
