@@ -31,6 +31,12 @@ angular.module('starter', ['ionic', 'ngCordova'])
           var map = new google.maps.Map(document.getElementById("map"), mapOptions)
           $scope.map = map
           $ionicLoading.hide()
+
+          var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'u here'
+          })
         }, function(err) {
           $ionicLoading.hide()
           console.log(err)
